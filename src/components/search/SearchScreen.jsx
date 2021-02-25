@@ -20,7 +20,8 @@ export const SearchScreen = ({history}) => {
 
     const {hero} = values;
 
-    const heroesFiltered = useMemo(() => GetHeroesByName(hero), [hero])
+    // const heroesFiltered = useMemo(() => GetHeroesByName(hero), [hero])
+    const heroesFiltered = useMemo(() => GetHeroesByName(q), [q])
     // const heroesFiltered = GetHeroesByName(hero)
 
     const handleSubmit = e => {
@@ -28,11 +29,12 @@ export const SearchScreen = ({history}) => {
 
         history.push(`?q=${hero}`);
 
+        localStorage.setItem('LastPath',`/search?q=${q}`);
     };
 
-    useEffect(() => {
-        history.push(`?q=${hero}`);
-    }, [hero]);
+    // useEffect(() => {
+    //     history.push(`?q=${hero}`);
+    // }, [hero]);
 
     return (
         <div>
